@@ -12,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "rootDir": "./src",
+    "baseUrl": "src",
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
