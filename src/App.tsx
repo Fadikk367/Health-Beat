@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, NavLink } from 'react-router-dom';
 
-function App() {
+import { Home, Register, Login, Statistics } from './views';
+
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <nav>
+          <h1>Health Beat</h1>
+          <ul>
+            <li><NavLink to='/'>Home</NavLink></li>
+            <li><NavLink to='/register'>Register</NavLink></li>
+            <li><NavLink to='/login'>Login</NavLink></li>
+            <li><NavLink to='/statistics'>Statistics</NavLink></li>
+          </ul>
+        </nav>
       </header>
-    </div>
+      <main>
+        <Switch>
+          <Route path='/' exact component={Home}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/register' component={Register}/>
+          <Route path='/statistics' component={Statistics}/>
+        </Switch>
+      </main>
+      <footer>
+        Health Beat / 2020 / Adrian Furman / TI
+      </footer>
+    </>
   );
 }
 
