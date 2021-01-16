@@ -1,35 +1,36 @@
-import React from 'react';
-import { Switch, Route, NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import { Home, Register, Login, Statistics } from './views';
+import GlobalStyles, { Layout, Header, HeaderContent, Main, Footer } from './Layout';
+import { Navigation, PrivateRoute } from './components';
+import { AuthContext } from 'providers/authContext';
 
 
 const App: React.FC = () => {
+  const { isAuthentificated } = useContext(AuthContext);
+
   return (
-    <>
-      <header>
-        <nav>
+    <Layout>
+      <GlobalStyles />
+      <Header>
+        <HeaderContent>
           <h1>Health Beat</h1>
-          <ul>
-            <li><NavLink to='/'>Home</NavLink></li>
-            <li><NavLink to='/register'>Register</NavLink></li>
-            <li><NavLink to='/login'>Login</NavLink></li>
-            <li><NavLink to='/statistics'>Statistics</NavLink></li>
-          </ul>
-        </nav>
-      </header>
-      <main>
+          <Navigation isAuthentificated={isAuthentificated}/>
+        </HeaderContent>
+      </Header>
+      <Main>
         <Switch>
           <Route path='/' exact component={Home}/>
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Register}/>
-          <Route path='/statistics' component={Statistics}/>
+          <PrivateRoute path='/statistics' isAuthentificated={isAuthentificated} component={Statistics}/>
         </Switch>
-      </main>
-      <footer>
+      </Main>
+      <Footer>
         Health Beat / 2020 / Adrian Furman / TI
-      </footer>
-    </>
+      </Footer>
+    </Layout>
   );
 }
 
