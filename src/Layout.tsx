@@ -31,6 +31,7 @@ export const Header = styled.header`
   width: 100%;
   color: white;
   height: 70px;
+  z-index: 100;
 `;
 
 export const HeaderContent = styled.div`
@@ -47,6 +48,7 @@ export const HeaderContent = styled.div`
 export const Main = styled.main`
   background-color: #f5f5f5;
   flex: 1;
+  padding: 30px;
 `;
 
 export const Footer = styled.footer`

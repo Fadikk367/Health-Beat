@@ -6,14 +6,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { AuthProvider } from './providers/authContext';
+import { MeasurementProvider } from './providers/measurementContext';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <MeasurementProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </MeasurementProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Home, Register, Login, Statistics } from './views';
-import GlobalStyles, { Layout, Header, HeaderContent, Main, Footer } from './Layout';
-import { Navigation, PrivateRoute } from './components';
+import { Home, Register, Login, Statistics } from 'views';
+import GlobalStyles, { Layout, Header, HeaderContent, Main, Footer } from 'Layout';
+import { Navigation, PrivateRoute } from 'components';
 import { AuthContext } from 'providers/authContext';
 
 
