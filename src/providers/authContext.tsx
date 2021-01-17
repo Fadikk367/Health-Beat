@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
-interface User {
-  firstName: string;
-  lastName: string;
-  birthDate: string;
-  email: string;
-}
+import { User } from 'interfaces';
+
 
 interface AuthContextProps {
   login(email: string, password: string): Promise<void | string>;
