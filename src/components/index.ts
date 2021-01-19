@@ -5,3 +5,4 @@ export { default as AddMeasurementForm } from './AddMeasurementForm';
 export { default as AnimatedButton } from './AnimatedButton';
 export { default as LineChart } from './LineChart';
 export { default as PersonalData } from './PersonalData';
+export { default as RegisterForm } from './RegisterForm';
