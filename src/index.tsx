@@ -5,19 +5,12 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { AuthProvider } from './providers/authContext';
-import { MeasurementProvider } from './providers/measurementContext';
-
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <MeasurementProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </MeasurementProvider>
-    </AuthProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
