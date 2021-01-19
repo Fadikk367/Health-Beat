@@ -8,13 +8,15 @@ interface MeasurementContextProps {
   measurements: Measurement[];
   fetchMeasurements(): Promise<void>;
   addMeasurement(measurement: Measurement): Promise<void>;
+  deleteMeasurement(id: string): Promise<void>;
 }
 
 
 const defaultMeasurementContext = {
   measurements: [],
   fetchMeasurements: () => Promise.resolve(),
-  addMeasurement: (measurement: Measurement) => Promise.resolve()
+  addMeasurement: (measurement: Measurement) => Promise.resolve(),
+  deleteMeasurement: (id: string) => Promise.resolve(),
 }
 
 
@@ -46,7 +48,7 @@ const MeasurementProvider: React.FC<{ measurementService: MeasurementService }> 
           'Authorization': localStorage.getItem('token')
         }
   
-        const response = await axios.post<Measurement[]>('/measurements/sync', { localMeasurements }, { headers });
+        await axios.post<Measurement[]>('/measurements/sync', localMeasurements, { headers });
         localStorage.setItem('measurements', "[]");
         // setMeasurements([...measurements, ...response.data]);
       } catch(err) {
@@ -73,8 +75,18 @@ const MeasurementProvider: React.FC<{ measurementService: MeasurementService }> 
     }
   }
 
+  async function deleteMeasurement(id: string): Promise<void> {
+    try {
+      const deleted = await measurementService.deleteOne(id);
+      const filteredMeasurements = measurements.filter(item => item._id !== deleted);
+      setMeasurements(filteredMeasurements);
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
   return (
-    <MeasurementContext.Provider value={{ measurements, fetchMeasurements, addMeasurement }}>
+    <MeasurementContext.Provider value={{ measurements, fetchMeasurements, addMeasurement, deleteMeasurement }}>
       {children}
     </MeasurementContext.Provider>
   )

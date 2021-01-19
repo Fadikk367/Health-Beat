@@ -29,6 +29,18 @@ class MeasurementOnlineService implements MeasurementService {
     }
   }
 
+  public async deleteOne(id: string): Promise<string> {
+    const headers = this.getAuthHeaders();
+
+    try {
+      await axios.delete<Measurement>(`/measurements/${id}`, { headers });
+      return id;
+    } catch(err) {
+      console.log(err);
+      throw new Error('not working');
+    }
+  }
+
   private getAuthHeaders(): { Authorization: string } {
     return {
       'Authorization': localStorage.getItem('token') || '',
