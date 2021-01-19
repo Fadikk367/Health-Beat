@@ -15,14 +15,14 @@ interface LoginFormData {
 
 
 const LoginForm: React.FC = () => {
-  const { login } = useContext(AuthContext);
-  const { register, handleSubmit, errors, setError } = useForm<LoginFormData>();
+  const { loginUser } = useContext(AuthContext);
+  const { register, handleSubmit, errors } = useForm<LoginFormData>();
   const [serverError, setServerError] = useState('');
   const history = useHistory();
 
   const handleLoginFormSubmit = handleSubmit(async ({ email, password }) => {
     try {
-      await login(email, password);
+      await loginUser(email, password);
       history.push('/statistics');
     } catch(err) {
       setServerError(err);
