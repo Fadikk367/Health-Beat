@@ -35,9 +35,7 @@ const AddMeasurementForm: React.FC<{ token: string }> = ({ token }) => {
   const { register, handleSubmit, errors, control } = useForm<MeasurementFormData>();
 
   const handleMeasurementFormSubmit = handleSubmit(async (measurement) => {
-    console.log({ measurement });
-
-    await addMeasurement({ ...measurement, date: measurement.date.toISOString().substring(0, 10) }, token);
+    await addMeasurement({ ...measurement, date: measurement.date.toISOString().substring(0, 10) });
   })
   return (
     <Form onSubmit={handleMeasurementFormSubmit}>

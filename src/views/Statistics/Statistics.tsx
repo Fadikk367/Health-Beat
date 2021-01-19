@@ -14,9 +14,7 @@ const Statistics: React.FC = () => {
   const { token, user } = useContext(AuthContext);
 
   useEffect(() => {
-    if (token) {
-      fetchMeasurements(token);
-    }
+    fetchMeasurements();
   }, []);
 
   return (
