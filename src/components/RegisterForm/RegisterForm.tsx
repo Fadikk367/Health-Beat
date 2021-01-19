@@ -61,7 +61,7 @@ const RegisterForm: React.FC = () => {
                     variant="inline"
                     label="Birth date"
                     format="MM/dd/yyyy"
-                    value={'2020-07-19'}
+                    value={new Date()}
                     onChange={e => console.log(e)}
                   />
                 }
@@ -69,7 +69,7 @@ const RegisterForm: React.FC = () => {
                 name='birthDate'
                 rules={{ required: 'Date is required' }}
                 control={control}
-                defaultValue='20/07/2020'
+                defaultValue={new Date()}
               />
             </MuiPickersUtilsProvider>
           {/* <ErrorMessageBox></ErrorMessageBox> */}

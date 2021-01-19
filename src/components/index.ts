@@ -6,3 +6,7 @@ export { default as AnimatedButton } from './AnimatedButton';
 export { default as LineChart } from './LineChart';
 export { default as PersonalData } from './PersonalData';
 export { default as RegisterForm } from './RegisterForm';
+export { default as MeasurementList } from './MeasurementList';
+export { default as Modal } from './Modal';
+export { default as ConfirmDeleteMeasurement } from './ConfirmDeleteMeasurement';
+export { default as Footer } from './Footer';

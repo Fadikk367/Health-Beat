@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { Home, Register, Login, Statistics } from 'views';
-import GlobalStyles, { Layout, Header, HeaderContent, Main, Footer } from 'Layout';
-import { Navigation, PrivateRoute } from 'components';
+import GlobalStyles, { Layout, Header, HeaderContent, Main } from 'Layout';
+import { Navigation, PrivateRoute, Footer } from 'components';
 import NetworkDetector from 'components/NetworkDetector';
 import { AuthContext } from 'providers/authContext';
 
@@ -28,9 +28,7 @@ const App: React.FC = () => {
           <PrivateRoute path='/statistics' isAuthentificated={isAuthentificated} component={Statistics}/>
         </Switch>
       </Main>
-      <Footer>
-        Health Beat / 2020 / Adrian Furman / TI
-      </Footer>
+      <Footer />
     </Layout>
   );
 }

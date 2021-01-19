@@ -23,7 +23,7 @@ const LoginForm: React.FC = () => {
   const handleLoginFormSubmit = handleSubmit(async ({ email, password }) => {
     try {
       await loginUser(email, password);
-      history.push('/statistics');
+      history.push('/statistics/chart');
     } catch(err) {
       setServerError(err);
     }
@@ -34,13 +34,13 @@ const LoginForm: React.FC = () => {
     <Form onSubmit={handleLoginFormSubmit}>
       <FormTitle>Zaloguj się</FormTitle>
       <FormControl>
-        <InputLabel htmlFor='email'>Email</InputLabel>
+        <InputLabel color='secondary' htmlFor='email'>Email</InputLabel>
         <TextInput type="text" name='email' id='email' inputRef={register({ required: 'Email is required' })}/>
         <ErrorMessageBox>{errors.email && errors.email.message}</ErrorMessageBox>
       </FormControl>
 
       <FormControl>
-        <InputLabel htmlFor='password'>Password</InputLabel>
+        <InputLabel color='secondary' htmlFor='password'>Password</InputLabel>
         <TextInput type="text" name='password' id='password' inputRef={register({ required: 'Password is required' })}/>
         <ErrorMessageBox>{errors.password && errors.password.message}</ErrorMessageBox>
       </FormControl>

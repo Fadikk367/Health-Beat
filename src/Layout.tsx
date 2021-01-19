@@ -48,9 +48,7 @@ export const Main = styled.main`
   background-color: #f5f5f5;
   flex: 1;
   padding: 30px;
-`;
-
-export const Footer = styled.footer`
-  padding: 30px;
-  background-color: #ad1f1f;
+  -webkit-box-shadow: 0px 0px 16px 0px rgba(148,148,148,1);
+  -moz-box-shadow: 0px 0px 16px 0px rgba(148,148,148,1);
+  box-shadow: 0px 0px 16px 0px rgba(148,148,148,1);
 `;

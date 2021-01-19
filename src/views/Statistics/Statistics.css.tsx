@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 
-export const FlexRow = styled.div<{ padding?: number, gap?: number }>`
+export const FlexRow = styled.div<{ padding?: number, gap?: number, layout?: string }>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${props => props.layout || 'space-between'};
   padding: ${props => props.padding || 30}px;
   gap: ${props => props.gap || 0}px;
 `;
@@ -24,4 +25,14 @@ export const Profile = styled.img`
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   border-radius: 15px;
+`;
+
+export const DataLink = styled(NavLink)`
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #999999;
+  font-weight: 400;
 `;
