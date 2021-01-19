@@ -1,50 +1,73 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect } from 'react';
 import axios from 'axios';
 
-import { Measurement } from 'interfaces';
+import { Measurement, MeasurementService } from 'interfaces';
 
 
 interface MeasurementContextProps {
-  measurements: Measurement[],
-  fetchMeasurements(token: string): Promise<void>
-  addMeasurement(measurement: Measurement, token: string): Promise<void>
+  measurements: Measurement[];
+  fetchMeasurements(): Promise<void>;
+  addMeasurement(measurement: Measurement): Promise<void>;
 }
 
 
 const defaultMeasurementContext = {
   measurements: [],
-  fetchMeasurements: (token: string) => Promise.resolve(),
-  addMeasurement: (measurement: Measurement, token: string)=> Promise.resolve()
+  fetchMeasurements: () => Promise.resolve(),
+  addMeasurement: (measurement: Measurement) => Promise.resolve()
 }
 
 
 const MeasurementContext = createContext<MeasurementContextProps>(defaultMeasurementContext);
 
 
-const MeasurementProvider: React.FC = ({ children }) => {
+const MeasurementProvider: React.FC<{ measurementService: MeasurementService }> = ({ children, measurementService }) => {
   const [measurements, setMeasurements] = React.useState<Measurement[]>([]);
+  
+  useEffect(() => {
+    const initializeContext = async () => {
+      await handleSyncMeasurements();
+      await fetchMeasurements();
+    }
 
-  const fetchMeasurements = async (token: string): Promise<void> => {
-    try {
-      const headers = {
-        'Authorization': token
+    if (navigator.onLine) {
+      initializeContext();
+    }
+  }, [measurementService])
+
+
+  async function handleSyncMeasurements(): Promise<void> {
+    const localMeasurements: Measurement[] = JSON.parse(localStorage.getItem('measurements') || "[]");
+    
+    if (localMeasurements.length) {
+      console.log('sync...');
+      try {
+        const headers = {
+          'Authorization': localStorage.getItem('token')
+        }
+  
+        const response = await axios.post<Measurement[]>('/measurements/sync', { localMeasurements }, { headers });
+        localStorage.setItem('measurements', "[]");
+        // setMeasurements([...measurements, ...response.data]);
+      } catch(err) {
+        console.log(err);
       }
+    }
+  }
 
-      const response = await axios.get<{ measurements: Measurement[] }>('/measurements', { headers });
-      setMeasurements(response.data.measurements);
+  async function fetchMeasurements(): Promise<void> {
+    try {
+      const fetchedMeasurements = await measurementService.fetchAll();
+      setMeasurements(fetchedMeasurements);
     } catch(err) {
       console.log(err);
     }
   } 
 
-  const addMeasurement = async (measurement: Measurement, token: string): Promise<void> => {
+  async function addMeasurement(measurement: Measurement): Promise<void> {
     try {
-      const headers = {
-        'Authorization': token
-      }
-
-      const response = await axios.post<Measurement>('/measurements', measurement, { headers });
-      setMeasurements([...measurements, response.data]);
+      const addedMeasurement = await measurementService.addOne(measurement);
+      setMeasurements([...measurements, addedMeasurement]);
     } catch(err) {
       console.log(err);
     }
