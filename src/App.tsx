@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import { Home, Register, Login, Statistics } from 'views';
 import GlobalStyles, { Layout, Header, HeaderContent, Main } from 'Layout';
-import { Navigation, PrivateRoute, Footer } from 'components';
+import { Navigation, PrivateRoute, Footer, Logo } from 'components';
 import NetworkDetector from 'components/NetworkDetector';
 import { AuthContext } from 'providers/authContext';
 
@@ -16,7 +16,7 @@ const App: React.FC = () => {
       <GlobalStyles />
       <Header>
         <HeaderContent>
-          <h1>Health Beat</h1>
+          <Logo />
           <Navigation isAuthentificated={isAuthentificated}/>
         </HeaderContent>
       </Header>

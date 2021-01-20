@@ -10,3 +10,4 @@ export { default as MeasurementList } from './MeasurementList';
 export { default as Modal } from './Modal';
 export { default as ConfirmDeleteMeasurement } from './ConfirmDeleteMeasurement';
 export { default as Footer } from './Footer';
+export { default as Logo } from './Logo';
