@@ -28,7 +28,6 @@ const LoginForm: React.FC = () => {
       setServerError(err);
     }
   })
-  console.log(errors);
 
   return (
     <Form onSubmit={handleLoginFormSubmit}>

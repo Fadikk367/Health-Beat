@@ -8,7 +8,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-size: 1.1.em;
+    font-size: 1em;
     font-family: 'Roboto', sans-serif;
   }
 `;
@@ -34,6 +34,7 @@ export const Header = styled.header`
 `;
 
 export const HeaderContent = styled.div`
+  padding: 0 10px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);

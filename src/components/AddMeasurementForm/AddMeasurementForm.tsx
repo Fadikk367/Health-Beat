@@ -99,7 +99,7 @@ const AddMeasurementForm: React.FC<{ token: string }> = ({ token }) => {
           </FormControl>
         </G>
       </Grid>
-    <AnimatedButton type='submit'>submit</AnimatedButton>
+    <AnimatedButton type='submit' style={{marginTop: '10px'}}>submit</AnimatedButton>
   </Form>
   )
 }
