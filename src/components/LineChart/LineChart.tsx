@@ -9,34 +9,69 @@ interface LineChartProps {
   measurements: Measurement[];
 }
 
+const extractDataSeries = (measurements: Measurement[]) => {
+  const dates: string[] = [];
+  const systolics: number[] = [];
+  const diastolics: number[] = [];
+
+  const orderedMeasurements = measurements.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  orderedMeasurements.forEach(measurement => {
+    dates.push(measurement.date);
+    systolics.push(measurement.systolic);
+    diastolics.push(measurement.diastolic);
+  });
+
+  return { dates, systolics, diastolics };
+}
+
 const LineChart: React.FC<LineChartProps> = ({ measurements }) => {
   const [chart, setChart] = useState<Chart>();
   const chartRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const { dates, systolics, diastolics } = extractDataSeries(measurements);
+
     if (chartRef.current) {
       setChart(new Chart(chartRef.current, { 
         type: 'line',
         data: {
-          labels: measurements.map(measurement => measurement.date),
+          labels: dates,
           datasets: [{
             label: 'systolic',
-            data: measurements.map(measurement => measurement.systolic)
+            data: systolics
           }, {
             label: 'diastolic',
-            data: measurements.map(measurement => measurement.diastolic)
+            data: diastolics
           }]
+        },
+        options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
         }
       }));
+    }
+
+    return () => {
+      if (chart) {
+        chart.destroy();
+      }
     }
   }, []); 
 
   useEffect(() => {
     if (chart) {
-      chart.data.labels = measurements.map(measurement => measurement.date);
+      const { dates, systolics, diastolics } = extractDataSeries(measurements);
+
+      chart.data.labels = dates;
       if (chart.data.datasets) {
-        chart.data.datasets[0].data = measurements.map(measurement => measurement.systolic);
-        chart.data.datasets[1].data = measurements.map(measurement => measurement.diastolic);
+        chart.data.datasets[0].data = systolics;
+        chart.data.datasets[1].data = diastolics;
       }
       chart.update();
     }
