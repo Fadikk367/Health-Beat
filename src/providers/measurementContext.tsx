@@ -1,5 +1,5 @@
 import React, { createContext, useEffect } from 'react';
-import axios from 'axios';
+import axios from 'api/axiosInstance';
 
 import { Measurement, MeasurementService } from 'interfaces';
 

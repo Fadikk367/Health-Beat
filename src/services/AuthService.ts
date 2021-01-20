@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'api/axiosInstance';
 
 import { User } from "interfaces";
 
@@ -20,9 +20,10 @@ class AuthService {
       return { token, user };
     } catch(err) {
       if (err.isAxiosError) {
+        console.log(err.response.data);
         return Promise.reject(err.response.data.message);
       } else {
-        return Promise.reject();
+        return Promise.reject('pop');
       }
     }
   }
@@ -38,6 +39,7 @@ class AuthService {
       return { token, user };
     } catch(err) {
       if (err.isAxiosError) {
+        console.log(err.response.data);
         return Promise.reject(err.response.data.message);
       } else {
         return Promise.reject();

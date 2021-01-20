@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'api/axiosInstance';
 
 import { Measurement } from 'interfaces';
 import { MeasurementService } from 'interfaces/MeasurementService';
