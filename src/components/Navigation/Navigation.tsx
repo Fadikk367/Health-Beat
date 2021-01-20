@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-import { NavList, Link } from './Navigation.css';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'; 
+import { NavList, Link, LogoutButton } from './Navigation.css';
+
+import { AuthContext } from 'providers/authContext';
 
 interface NavigationProps {
   isAuthentificated: boolean;
@@ -8,6 +11,7 @@ interface NavigationProps {
 
 
 const Navigation: React.FC<NavigationProps> = ({ isAuthentificated }) => {
+  const { logout } = useContext(AuthContext);
   const publicNavItems = [
     <li key={1}><Link to='/'>Home</Link></li>,
     <li key={2}><Link to='/login'>Login</Link></li>,
@@ -15,8 +19,15 @@ const Navigation: React.FC<NavigationProps> = ({ isAuthentificated }) => {
 
   const privateNavItems = [
     <li key={1}><Link to='/'>Home</Link></li>,
-    <li key={4}><Link to='/statistics'>Statistics</Link></li>,
-    <li key={3}><Link to='/logout'>Logout</Link></li>,
+    <li key={4}><Link to='/statistics/chart'>Statistics</Link></li>,
+    <li key={3}>
+      <LogoutButton 
+        endIcon={<ExitToAppIcon htmlColor='white'/>}
+        onClick={logout}
+      >
+        Logout
+      </LogoutButton>
+    </li>,
   ]
 
   const navItems = isAuthentificated ? privateNavItems : publicNavItems;

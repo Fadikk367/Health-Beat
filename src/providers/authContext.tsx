@@ -46,6 +46,9 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const logout = (): void => {
     authService.logout();
+    setIsAuthentificated(false);
+    setToken(null);
+    setUser(null);
   }
 
   return (
