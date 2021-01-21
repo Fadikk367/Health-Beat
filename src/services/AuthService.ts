@@ -19,11 +19,13 @@ class AuthService {
 
       return { token, user };
     } catch(err) {
+      if (err.message === 'Network Error') {
+        return Promise.reject('Network Error - please check your connection')
+      }
       if (err.isAxiosError) {
-        console.log(err.response.data);
         return Promise.reject(err.response.data.message);
       } else {
-        return Promise.reject('pop');
+        return Promise.reject(err.message);
       }
     }
   }
@@ -38,11 +40,13 @@ class AuthService {
 
       return { token, user };
     } catch(err) {
+      if (err.message === 'Network Error') {
+        return Promise.reject('Network Error - please check your connection')
+      }
       if (err.isAxiosError) {
-        console.log(err.response.data);
         return Promise.reject(err.response.data.message);
       } else {
-        return Promise.reject();
+        return Promise.reject(err.message);
       }
     }
   }

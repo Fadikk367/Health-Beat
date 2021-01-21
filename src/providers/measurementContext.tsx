@@ -29,7 +29,6 @@ const MeasurementProvider: React.FC<{ measurementService: MeasurementService }> 
   useEffect(() => {
     const initializeContext = async () => {
       await handleSyncMeasurements();
-      await fetchMeasurements();
     }
 
     if (navigator.onLine) {
@@ -42,7 +41,6 @@ const MeasurementProvider: React.FC<{ measurementService: MeasurementService }> 
     const localMeasurements: Measurement[] = JSON.parse(localStorage.getItem('measurements') || "[]");
     
     if (localMeasurements.length) {
-      console.log('sync...');
       try {
         const headers = {
           'Authorization': localStorage.getItem('token')
@@ -50,7 +48,6 @@ const MeasurementProvider: React.FC<{ measurementService: MeasurementService }> 
   
         await axios.post<Measurement[]>('/measurements/sync', localMeasurements, { headers });
         localStorage.setItem('measurements', "[]");
-        // setMeasurements([...measurements, ...response.data]);
       } catch(err) {
         console.log(err);
       }
@@ -81,7 +78,7 @@ const MeasurementProvider: React.FC<{ measurementService: MeasurementService }> 
       const filteredMeasurements = measurements.filter(item => item._id !== deleted);
       setMeasurements(filteredMeasurements);
     } catch(err) {
-      console.log(err);
+      console.log(err.message);
     }
   }
 
