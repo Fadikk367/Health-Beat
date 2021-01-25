@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, Link, GithubButton } from './Footer.css';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import Button from '@material-ui/core/Button';
+
 
 const Footer = () => {
   return (

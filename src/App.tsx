@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { Home, Register, Login, Statistics } from 'views';
 import GlobalStyles, { Layout, Header, HeaderContent, Main } from 'Layout';
