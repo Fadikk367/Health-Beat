@@ -1,28 +1,34 @@
 import React from 'react';
 
-import { CardsPanel, Card, Paragraph, CardHeader } from './Home.css';
+import { Container, CardsPanel, Title, Subtitle, Card, Graphic, Paragraph, CardHeader } from './Home.css';
+import image from 'images/background.svg'
 
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <h1>Home page</h1>
-      <Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi laborum adipisci tempore est, minus pariatur ut incidunt deserunt unde. Delectus quae maxime hic nesciunt nemo ex architecto omnis veniam magni aliquid repudiandae officia tenetur ea provident, est velit quibusdam similique suscipit quidem. Ipsa, dolores.</Paragraph>
+    <Container>
+      <div style={{ display: 'flex' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', marginTop: '120px' }}>
+          <Title>Take care of your future</Title>
+          <Subtitle>For you and for your relatives</Subtitle>
+        </div>
+        <Graphic src={image}/>
+      </div>
       <CardsPanel>
         <Card>
           <CardHeader>How to measure blood pressure correctly?</CardHeader>
-          <Paragraph>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolores quae autem quo error repellendus praesentium architecto, non pariatur provident?</Paragraph>
-        </Card>
-        <Card>
-          <CardHeader>How increased blood preassure affects our life?</CardHeader>
-          <Paragraph>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolores quae autem quo error repellendus praesentium architecto, non pariatur provident?</Paragraph>
+          <Paragraph>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolores quae autem quo error.</Paragraph>
         </Card>
         <Card>
           <CardHeader>How to reduce blood preassure?</CardHeader>
-          <Paragraph>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolores quae autem quo error repellendus praesentium architecto, non pariatur provident?</Paragraph>
+          <Paragraph>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolores quae.</Paragraph>
+        </Card>
+        <Card>
+          <CardHeader>How increased blood preassure affects our life?</CardHeader>
+          <Paragraph>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat dolores quae autem quo error repellendus.</Paragraph>
         </Card>
       </CardsPanel>
-    </div>
+    </Container>
   )
 }
 

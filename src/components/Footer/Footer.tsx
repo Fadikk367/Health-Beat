@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <Container>
       Health Beat / 2020 / Adrian Furman / TI
-      <Link href="">
+      <Link href="https://github.com/Fadikk367/Health-Beat">
         <GithubButton endIcon={<GitHubIcon htmlColor='white'/>}>source code</GithubButton>
       </Link>
     </Container>

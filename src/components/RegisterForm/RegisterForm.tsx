@@ -67,7 +67,7 @@ const RegisterForm: React.FC = () => {
     }),
     password: register({
       required: 'Password is required',
-      minLength: { value: 8, message: 'Minimum 2 characters' },
+      minLength: { value: 8, message: 'Minimum 8 characters' },
       maxLength: { value: 16, message: 'Maximum 16 characters' },
     })
   }

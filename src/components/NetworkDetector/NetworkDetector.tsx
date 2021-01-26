@@ -26,7 +26,9 @@ const NetworkDetector = (Component: React.FC) => {
 
     return (
       <AuthProvider>
-        <MeasurementProvider measurementService={isOnline ? measurementOnlineService : measurementOfflineService}>
+        <MeasurementProvider 
+          measurementService={isOnline ? measurementOnlineService : measurementOfflineService}
+        >
           <Component />
         </MeasurementProvider>
       </AuthProvider>
