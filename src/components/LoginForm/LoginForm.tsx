@@ -40,7 +40,7 @@ const LoginForm: React.FC = () => {
 
       <FormControl>
         <InputLabel color='secondary' htmlFor='password'>Password</InputLabel>
-        <TextInput type="text" name='password' id='password' inputRef={register({ required: 'Password is required' })}/>
+        <TextInput type="password" name='password' id='password' inputRef={register({ required: 'Password is required' })}/>
         <ErrorMessageBox>{errors.password && errors.password.message}</ErrorMessageBox>
       </FormControl>
       <FlexRow>

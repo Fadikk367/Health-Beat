@@ -121,7 +121,7 @@ const RegisterForm: React.FC = () => {
         </FormControl>
         <FormControl>
           <InputLabel color='secondary'>Password</InputLabel>
-          <TextInput name='password' inputRef={inputRegister.password}/>
+          <TextInput type='password' name='password' inputRef={inputRegister.password}/>
           <ErrorMessageBox>{errors.password && errors.password.message}</ErrorMessageBox>
         </FormControl>
         <FlexRow>
