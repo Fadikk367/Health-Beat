@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { AuthContext } from 'providers/authContext';
 
-import { TextInput, ErrorMessageBox, Form, FormTitle, LoginButton, FlexRow, ServerErrorMessage } from './LoginForm.css';
+import { TextInput, ErrorMessageBox, Form, FormTitle, LoginButton, FlexRow, ServerErrorMessage } from './Login.css';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 
@@ -14,7 +14,7 @@ interface LoginFormData {
 }
 
 
-const LoginForm: React.FC = () => {
+const Login: React.FC = () => {
   const { loginUser } = useContext(AuthContext);
   const { register, handleSubmit, errors } = useForm<LoginFormData>();
   const [serverError, setServerError] = useState('');
@@ -52,4 +52,4 @@ const LoginForm: React.FC = () => {
   )
 }
 
-export default LoginForm;
+export default Login;

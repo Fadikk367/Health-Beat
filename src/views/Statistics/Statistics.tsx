@@ -53,7 +53,7 @@ const Statistics: React.FC = () => {
               </Route>
               <Route path='/statistics/measurements/:id/edit'>
                 <Modal title='Edit measurement'>
-                  <h1>EDIT</h1>
+                  <h2>One day there will be edit form...</h2>
                 </Modal>
               </Route>
             </Switch>
