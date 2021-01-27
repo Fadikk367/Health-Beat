@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8000",
-  "homepage": "https://Fadikk367.github.io/Health-Beat",
+  "homepage": "/",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@material-ui/core": "^4.11.2",
@@ -36,7 +36,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -b master -d build",
+    "deploy-aws": "aws s3 sync build/ s3://health-beat"
   },
   "eslintConfig": {
     "extends": [
