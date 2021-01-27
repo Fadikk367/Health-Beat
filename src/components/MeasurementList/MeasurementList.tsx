@@ -24,7 +24,7 @@ const MeasurementList: React.FC<MeasurementListProps> = ({ measurements }) => {
 
   const items = measurements.map((item, i) => (
     <ListItem key={item._id}>
-      <Cell width={40}>{i}</Cell>
+      <Cell width={40}>{i}.</Cell>
       <Cell flex={4}>{item.systolic}/{item.diastolic}</Cell>
       <Cell flex={2}>{item.date}</Cell>
       <Cell flex={2}>{item.timeOfDay}</Cell>

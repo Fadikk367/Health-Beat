@@ -26,9 +26,7 @@ const Modal: React.FC<ModalProps> = ({ title, children, width = 400, height = 40
       <ModalContent onClick={e => e.stopPropagation()} width={width} height={height}>
         <ModalHeader>
           <ModalTitle>{title}</ModalTitle>
-          <IconButton 
-            onClick={handleCloseModal}
-          >
+          <IconButton onClick={handleCloseModal}>
             <CloseIcon htmlColor='white'/>
           </IconButton>
         </ModalHeader>
