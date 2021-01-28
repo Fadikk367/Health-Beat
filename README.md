@@ -1,8 +1,18 @@
 # Health Beat
 
+## Opis
+
+Aplikacje webowa pozwalająca  zalogowanym użytkownikom na wprowadzanie pomiarów ciśnienia krwi w danym dniu i o konkretnej porze dnia. Aplikacja została stworzona z w sposób umożliwiający zapisywanie danych pomimo braku połączenia z internetem (w trybie offline przeglądarki, który należy ręcznie włączyć). Po ponownym nawiązaniu połączenia (powrotu do trybu online) dane są automatyczne synchronizowane ze zdalną bazą danych. Istotnym aspektem jest wymóg bycia wcześniej zalogowanym aby móc działać w trybie offline - wymagana jest obecność tokenu uwierzytelnienia w localStorage.  
   
 
-Aplikacje webowa pozwalająca  zalogowanym użytkownikom na wprowadzanie pomiarów ciśnienia krwi o konkretnej porze dnia. Aplikacja została stworzona z w sposób umożliwiający zapisywanie danych pomimo braku połączenia z internetem (w trybie offline przeglądarki). Po ponownym nawiązaniu połączenia (powrotu do trybu online) dane są automatyczne synchronizowane ze zdalną bazą danych. Istotnym aspektem jest wymóg bycia wcześniej zalogowanym aby móc działać w trybie offline - wymagana jest obecność tokenu uwierzytelniania w localStorage.
+### Uwagi do trybu offline
+
+Tryb offline zgodnie z wymaganiami określonymi w poleceniu rozumiany jest jako ręczne włączenie takiego trybu w przegladarce - mechanizm przełączania trybów oparty jest o eventy online/offline oraz zmienną navigator.onLine, które nie do końca i nie we wszytskich przeglądarkach radzą sobie z wykryciem np. odłączenia kabla.
+
+### Backend 
+
+Część backendowa aplikacji znajduje się w osobnym [repozytorium](https://github.com/Fadikk367/Health-Beat-server).
+
 
 ## Interfejs użytkownika
 ### Strona główna
@@ -24,15 +34,15 @@ Aplikacje webowa pozwalająca  zalogowanym użytkownikom na wprowadzanie pomiar�
 * Baza danych - MongoDB
 
 ### Wybrane użyte biblioteki
-* chartjs - biblioteka do tworzenia wykresów,
+* chartjs - biblioteka do tworzenia wykresów
 
-* react-hook-form - obsługa formularzy z walidacją po stronie klienta,
+* react-hook-form - obsługa formularzy z walidacją po stronie klienta
 
-* material-ui - biblioteka gotowych komponentów Reactowych (wykorzystana na najniższym poziomie abstrakcji - przyciski, pola formularzy, date picker),
+* material-ui - biblioteka gotowych komponentów Reactowych (wykorzystana na najniższym poziomie abstrakcji - przyciski, pola formularzy, date picker)
 
-* styled-components .
+* styled-components
 
-* react-router-dom.
+* react-router-dom
 
 ### Hosting
 Serwerowa część aplikacji umieszczona została na platformie AWS w usłudze Elastic Beanstalk. Frontend aplikacji serwowany jest z usługi S3 jako static web hosting. Baza MongoDB hostowana jest w oficjalnej usłudze chmurowej MongoDB Atlas.
@@ -65,8 +75,8 @@ export  interface  MeasurementService {
 	deleteOne(id: string): Promise<string>;
 }
 ```
- Ten interfejs jest implementowany przed dwa serwisy - **MeasurementOfflineService**  oraz **MeasurementOnlineService** przy czym serwis służący do pracy offline zamiast komunikacji ze zdalnym serwerem, który zapisuje dane w bazie danych, oparty jest na lokalnym mechanizmie wbudowanym w przeglądarki - localStorage. Kluczowy moment zachodzi w Komponencie wyższego rzędu (HOC) NetworkDetector, który opakowuje właściwą aplikację Providerem kontekstu reactowego (React Context API) z wstrzykniętym odpowiednim serwisem w zależności od sytuacji. 
-return (
+ Ten interfejs jest implementowany przed dwa serwisy - **MeasurementOfflineService**  oraz **MeasurementOnlineService** przy czym serwis służący do pracy offline zamiast komunikacji ze zdalnym serwerem, który zapisuje dane w bazie danych, oparty jest na lokalnym mechanizmie wbudowanym w przeglądarki - localStorage. Kluczowy moment zachodzi w Komponencie wyższego rzędu (HOC) NetworkDetector, który opakowuje właściwą aplikację Providerem kontekstu reactowego (React Context API) z wstrzykniętym odpowiednim serwisem w zależności od sytuacji:
+
 ```typescript
 return (
 	<AuthProvider>
@@ -146,7 +156,7 @@ W tym miejscu użyte zostały wzorce repozytorium oraz singletonu - każde z dw�
 
 Kod aplikacji klienta został skompilowany do standardu ES5 a więc wszystkie wersje przeglądarek wspierające ten standard powinny prawidłowo obsługiwać aplikację. Naturalnie wymogiem działania aplikacji jest obsługa języka JavaScript. 
 
-Do pracy w trybie offline zalecana jest przeglądarka Mozilla Firefox, która domyślnie cachuje odwiedzone strony i wczytuje je w momencie braku połączenia z internetem.
+Do pracy w trybie offline zalecana jest przeglądarka Mozilla Firefox, która domyślnie cachuje odwiedzone strony i wczytuje je bezproblemowo w momencie włączenia trybu offline.
 
 
 

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { Container, CardsPanel, Title, Subtitle, Card, Graphic, Paragraph, CardHeader } from './Home.css';
-import image from 'images/background.svg'
 
 
 const Home: React.FC = () => {
@@ -12,7 +11,7 @@ const Home: React.FC = () => {
           <Title>Take care of your future</Title>
           <Subtitle>For you and for your relatives</Subtitle>
         </div>
-        <Graphic src={image}/>
+        <Graphic src='https://health-beat.s3.eu-central-1.amazonaws.com/static/media/background.906d3019.svg'/>
       </div>
       <CardsPanel>
         <Card>

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import logo from 'svgs/cardiogram.svg'
 
 const Container = styled.h1`
   font-size: 2em;
@@ -17,7 +16,7 @@ const Container = styled.h1`
 const Logo = () => {
   return (
     <Container>
-      <img src={logo} alt=""/>
+      <img src='https://health-beat.s3.eu-central-1.amazonaws.com/static/media/cardiogram.e0cff65c.svg' alt=""/>
       HEALTH BEAT
     </Container>
   )

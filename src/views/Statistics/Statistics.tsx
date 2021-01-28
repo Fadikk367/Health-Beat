@@ -14,7 +14,6 @@ import { Profile, FlexRow, FlexItem, DataLink } from './Statistics.css';
 import { MeasurementContext } from 'providers/measurementContext';
 import { AuthContext } from 'providers/authContext';
 
-import profilePlaceholder from 'images/profile-placeholder.jpg'
 
 
 const Statistics: React.FC = () => {
@@ -29,7 +28,7 @@ const Statistics: React.FC = () => {
     <>
       <FlexRow gap={60}>
         <FlexItem width={'35%'}>
-          <Profile src={profilePlaceholder} alt='user profile image'/>
+          <Profile src='https://health-beat.s3.eu-central-1.amazonaws.com/static/media/profile-placeholder.cb3a859d.jpg' alt='user profile image'/>
         </FlexItem>
         <FlexItem flex={1}>
           <PersonalData user={user}/>
