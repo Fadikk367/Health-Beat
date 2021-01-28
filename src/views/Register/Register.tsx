@@ -95,6 +95,7 @@ const Register: React.FC = () => {
               disableToolbar
               variant="inline"
               label="Birth date"
+              color='secondary'
               format="MM/dd/yyyy"
               helperText={errors.birthDate && processBirthDateError(errors.birthDate)}
               value={new Date()}

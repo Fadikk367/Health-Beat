@@ -34,6 +34,8 @@ export const CardsPanel = styled.section`
 export const Graphic = styled.img`
   display: block;
   width: 60%;
+  min-width: 500px;
+  min-height: 376px;
 `;
 
 

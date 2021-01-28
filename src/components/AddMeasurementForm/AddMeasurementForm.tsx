@@ -46,15 +46,39 @@ const AddMeasurementForm: React.FC<{ token: string }> = ({ token }) => {
         <G item xs={6}>
           <FormControl>
             <InputLabel color='secondary' htmlFor='systolic'>Systolic:</InputLabel>
-            <Input name='systolic' id='systolic' type='number' color='secondary' inputRef={register({ required: 'This filed is required', valueAsNumber: true })} />
-            <FormHelperText>{errors.systolic && errors.systolic.message}</FormHelperText>
+            <Input 
+              name='systolic' 
+              id='systolic' 
+              type='number' 
+              color='secondary' 
+              inputProps={{
+                min: "1"
+              }}
+              inputRef={register({ 
+                required: 'This filed is required', 
+                valueAsNumber: true, 
+              })} 
+            />
+            <FormHelperText style={{height: '20px'}}>{errors.systolic && errors.systolic.message}</FormHelperText>
           </FormControl>
         </G>
         <G item xs={6}>
           <FormControl>
             <InputLabel color='secondary' htmlFor='diastolic'>Diastolic:</InputLabel>
-            <Input name='diastolic' id='diastolic' type='number' color='secondary' inputRef={register({ required: 'This filed is required', valueAsNumber: true })} />
-            <FormHelperText>{errors.diastolic && errors.diastolic.message}</FormHelperText>
+            <Input 
+              name='diastolic' 
+              id='diastolic' 
+              type='number' 
+              color='secondary' 
+              inputProps={{
+                min: "1"
+              }}
+              inputRef={register({ 
+                required: 'This filed is required', 
+                valueAsNumber: true, 
+              })} 
+            />
+            <FormHelperText style={{height: '20px'}}>{errors.diastolic && errors.diastolic.message}</FormHelperText>
           </FormControl>
         </G>
         <G item xs={6}>

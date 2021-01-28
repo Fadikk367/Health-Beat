@@ -40,17 +40,21 @@ const MeasurementProvider: React.FC<{ measurementService: MeasurementService }> 
   async function handleSyncMeasurements(): Promise<void> {
     const localMeasurements: Measurement[] = JSON.parse(localStorage.getItem('measurements') || "[]");
     
-    if (localMeasurements.length) {
-      try {
-        const headers = {
-          'Authorization': localStorage.getItem('token')
-        }
-  
-        await axios.post<Measurement[]>('/measurements/sync', localMeasurements, { headers });
-        localStorage.setItem('measurements', "[]");
-      } catch(err) {
-        console.log(err);
+    try {
+      const headers = {
+        'Authorization': localStorage.getItem('token')
       }
+  
+      const response = await axios.post<Measurement[]>(
+        '/measurements/sync', 
+        { measurements: localMeasurements }, 
+        { headers }
+      );
+      
+      setMeasurements(response.data);
+      localStorage.setItem('measurements', "[]");
+    } catch(err) {
+      console.log(err);
     }
   }
 

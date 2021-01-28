@@ -31,7 +31,7 @@ const Login: React.FC = () => {
 
   return (
     <Form onSubmit={handleLoginFormSubmit}>
-      <FormTitle>Zaloguj się</FormTitle>
+      <FormTitle>Login now</FormTitle>
       <FormControl>
         <InputLabel color='secondary' htmlFor='email'>Email</InputLabel>
         <TextInput type="text" name='email' id='email' inputRef={register({ required: 'Email is required' })}/>

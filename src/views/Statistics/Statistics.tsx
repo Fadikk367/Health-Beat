@@ -29,7 +29,7 @@ const Statistics: React.FC = () => {
     <>
       <FlexRow gap={60}>
         <FlexItem width={'35%'}>
-          <Profile src={profilePlaceholder}/>
+          <Profile src={profilePlaceholder} alt='user profile image'/>
         </FlexItem>
         <FlexItem flex={1}>
           <PersonalData user={user}/>
