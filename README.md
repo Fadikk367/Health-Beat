@@ -3,6 +3,10 @@
 ## Opis
 
 Aplikacje webowa pozwalająca  zalogowanym użytkownikom na wprowadzanie pomiarów ciśnienia krwi w danym dniu i o konkretnej porze dnia. Aplikacja została stworzona z w sposób umożliwiający zapisywanie danych pomimo braku połączenia z internetem (w trybie offline przeglądarki, który należy ręcznie włączyć). Po ponownym nawiązaniu połączenia (powrotu do trybu online) dane są automatyczne synchronizowane ze zdalną bazą danych. Istotnym aspektem jest wymóg bycia wcześniej zalogowanym aby móc działać w trybie offline - wymagana jest obecność tokenu uwierzytelnienia w localStorage.  
+
+Przykładowe konto użytkownika:
+email: example7@email.com
+hasło: password
   
 
 ### Uwagi do trybu offline
